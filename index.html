@@ -3,48 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scott McKeon</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Scott McKeon's Homepage!!! :)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+    body {
+      background-color: #000033;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+      background-size: 50px 50px, 25px 25px;
+      background-position: 0 0, 12px 12px;
+      color: #ffffff;
+      font-family: "Comic Sans MS", "Comic Neue", cursive;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* twinkling stars */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 1px 1px at 10% 20%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 30% 70%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 55% 15%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 75% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 90% 80%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 45% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 65% 35%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(ellipse 1px 1px at 20% 55%, rgba(255,255,255,0.6) 0%, transparent 100%);
+      animation: twinkle 4s infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.4; }
+      50%  { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    marquee {
+      background: #000000;
+      border: 2px solid #ffff00;
+      color: #ffff00;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 4px 0;
+      margin-bottom: 10px;
+    }
+
+    .header-table {
+      width: 100%;
+      border: 3px ridge #ff00ff;
+      background: linear-gradient(180deg, #000066 0%, #000033 100%);
+      padding: 12px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .header-table h1 {
+      font-size: 2.8em;
+      margin: 0;
+      color: #00ffff;
+      text-shadow: 2px 2px #ff00ff, 4px 4px #0000ff;
+      letter-spacing: 2px;
+    }
+
+    .header-table .subtitle {
+      color: #ffff00;
+      font-size: 1em;
+      margin-top: 6px;
+      animation: blinker 1.2s step-start infinite;
+    }
+
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+
+    .nav-bar {
+      background: #000000;
+      border: 2px solid #00ff00;
+      padding: 6px;
+      text-align: center;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .nav-bar a {
+      color: #00ff00;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .nav-bar a:hover { color: #ffff00; text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 2px dashed #ff00ff;
+      margin: 12px 0;
+    }
+
+    .section {
+      border: 2px ridge #ff6600;
+      background-color: rgba(0,0,0,0.6);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      color: #ff6600;
+      font-size: 1.3em;
+      margin: 0 0 10px 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .section p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #cccccc;
+      margin: 0 0 8px 0;
+    }
+
+    /* career table */
+    .career-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .career-table th {
+      background: #003366;
+      color: #00ffff;
+      border: 1px solid #0066cc;
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    .career-table td {
+      border: 1px solid #333366;
+      padding: 7px 8px;
+      vertical-align: top;
+      color: #cccccc;
+    }
+
+    .career-table tr:nth-child(odd) td  { background: rgba(0,0,80,0.5); }
+    .career-table tr:nth-child(even) td { background: rgba(0,0,40,0.5); }
+
+    .career-table .co-name {
+      color: #ffff00;
+      font-weight: bold;
+    }
+
+    .career-table .year-cell {
+      color: #00ff00;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* education */
+    .edu-item {
+      margin-bottom: 8px;
+    }
+    .edu-item .school { color: #00ffff; font-weight: bold; font-size: 13px; }
+    .edu-item .degree { color: #aaaaaa; font-size: 12px; }
+
+    .visitor-counter {
+      text-align: center;
+      font-size: 11px;
+      color: #666699;
+      margin-top: 6px;
+    }
+
+    .counter-display {
+      display: inline-block;
+      background: #000000;
+      border: 1px inset #333;
+      color: #00ff00;
+      font-family: "Courier New", monospace;
+      font-size: 18px;
+      letter-spacing: 4px;
+      padding: 2px 8px;
+    }
+
+    .under-construction {
+      display: inline-block;
+      background: #ffff00;
+      color: #000000;
+      font-weight: bold;
+      font-size: 11px;
+      padding: 2px 6px;
+      border: 2px solid #ff6600;
+      margin-left: 8px;
+      animation: flash 0.8s step-start infinite;
+    }
+
+    @keyframes flash {
+      50% { background: #ff6600; color: #ffffff; }
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #666699;
+      padding: 12px 0 20px;
+      border-top: 1px dashed #333366;
+      margin-top: 10px;
+    }
+
+    footer a { color: #9999ff; }
+
+    .rainbow {
+      background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #8b00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: bold;
+    }
+
+    .email-link { color: #ff99ff; }
+    .email-link:hover { color: #ffffff; }
+
+    @media (max-width: 520px) {
+      .header-table h1 { font-size: 1.8em; }
+      .career-table { font-size: 11px; }
+    }
+  </style>
 </head>
 <body>
+<div class="wrapper">
 
-  <nav>
-    <span class="brand">Scott McKeon</span>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="career.html">Career</a></li>
-    </ul>
-  </nav>
+  <marquee behavior="scroll" direction="left" scrollamount="4">
+    ★ Welcome to Scott McKeon's Homepage!!! ★ &nbsp;&nbsp; Sydney-based Entrepreneur &nbsp;&nbsp; ★ Co-Founder @ espresso Displays ★ &nbsp;&nbsp; Founder @ Homerun &nbsp;&nbsp; ★ Best viewed at 800x600 ★
+  </marquee>
 
-  <div class="hero">
-    <h1>Sydney-based<br>entrepreneur.</h1>
-    <p>Building products that change how people live and work. Co-founder of espresso Displays and founder of Homerun.</p>
+  <div class="header-table">
+    <h1>SCOTT McKEON</h1>
+    <div class="subtitle">~~~ Sydney Entrepreneur ~~~</div>
   </div>
 
-  <div class="container" style="padding-top: 0;">
+  <div class="nav-bar">
+    [ <a href="#about">About Me</a> ]
+    [ <a href="#career">Career</a> ]
+    [ <a href="#education">Education</a> ]
+    [ <a href="mailto:scott@sharehousepro.com" class="email-link">Email Me!!</a> ]
+  </div>
 
-    <h2>Current</h2>
-    <div class="timeline">
-      <div class="entry">
-        <div class="meta">
-          <div class="year">2025–</div>
-        </div>
-        <div class="body">
-          <h3>Homerun</h3>
-          <div class="role">Founder</div>
-          <p>Building the all-in-one app for sharehouses — helping housemates manage bills, rent, chores, and household admin. Based in Sydney, focused on making shared living 100× better than it is today.</p>
-        </div>
-      </div>
-    </div>
+  <hr>
 
-    <h2 style="margin-top: 3rem;">Background</h2>
-    <p style="font-size: 0.9rem; color: #444; max-width: 600px; line-height: 1.7;">
-      Civil engineering graduate from UTS turned hardware founder. Co-founded espresso Displays out of university and grew it from a Kickstarter campaign to a globally distributed product. Graduate of the Sydney School of Entrepreneurship.
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <h2>~*~ About Me ~*~</h2>
+    <p>
+      G'day!! Welcome to my corner of the internet!! 🙂 I'm a Sydney-based entrepreneur and co-founder of <strong style="color:#ffff00">espresso Displays</strong> — the world's thinnest portable touchscreen monitor. After growing espresso from a Kickstarter into a global hardware company, I'm now building <strong style="color:#ffff00">Homerun</strong>, the all-in-one app for sharehouses.
     </p>
-
+    <p>
+      I'm a civil engineering graduate from UTS and a Sydney School of Entrepreneurship alumni. <span class="under-construction">!! UPDATING !!</span>
+    </p>
   </div>
 
-  <footer>© Scott McKeon</footer>
+  <hr>
 
+  <!-- CAREER -->
+  <div class="section" id="career">
+    <h2>~*~ My Career History ~*~</h2>
+    <table class="career-table">
+      <thead>
+        <tr>
+          <th>Years</th>
+          <th>Company</th>
+          <th>Role</th>
+          <th>What I Did</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="year-cell">2025 –<br>Present</td>
+          <td class="co-name">Homerun</td>
+          <td>Founder</td>
+          <td>Building the all-in-one app for sharehouses — helping housemates manage bills, rent, chores, utilities and household admin. Turning a rental lease into a shared home dashboard. Based in Sydney. 🏠</td>
+        </tr>
+        <tr>
+          <td class="year-cell">2018 –<br>2023</td>
+          <td class="co-name">espresso Displays</td>
+          <td>Co-Founder</td>
+          <td>Co-founded with Will Scuderi out of UTS. Built the world's thinnest portable touchscreen monitor (&lt;5mm). Launched on Kickstarter Oct 2019 — raised <strong style="color:#00ff00">$435,000</strong> in the first 40 days (1,000%+ funded!!). Scaled to a global hardware company. 🖥️</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- EDUCATION -->
+  <div class="section" id="education">
+    <h2>~*~ Education ~*~</h2>
+    <div class="edu-item">
+      <div class="school">🎓 University of Technology Sydney (UTS)</div>
+      <div class="degree">Bachelor of Engineering (Civil) &amp; Diploma of Engineering Practice · 2013–2018</div>
+    </div>
+    <div class="edu-item" style="margin-top:10px">
+      <div class="school">🚀 Sydney School of Entrepreneurship (SSE)</div>
+      <div class="degree">Graduate · Alumni</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="visitor-counter">
+    <div>You are visitor number:</div>
+    <div class="counter-display">001337</div>
+    <div style="margin-top:4px">Since June 2025 · <span class="rainbow">Thanks for visiting!!!</span></div>
+  </div>
+
+  <footer>
+    &copy; 2025 Scott McKeon &nbsp;|&nbsp;
+    <a href="mailto:scott@sharehousepro.com">scott@sharehousepro.com</a>
+    &nbsp;|&nbsp; Sydney, Australia 🇦🇺<br>
+    <span style="font-size:10px">Best viewed in Internet Explorer 6.0 at 800×600 resolution</span>
+  </footer>
+
+</div>
 </body>
 </html>
