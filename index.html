@@ -4,32 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scott McKeon</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f9f9f9;
-      color: #111;
-    }
-    .card {
-      text-align: center;
-      padding: 3rem 4rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-    }
-    h1 { margin: 0 0 0.5rem; font-size: 2rem; }
-    p  { margin: 0; color: #666; font-size: 1rem; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Hello 👋</h1>
-    <p>scott-mckeon.github.io is live.</p>
+
+  <nav>
+    <span class="brand">Scott McKeon</span>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="career.html">Career</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Sydney-based<br>entrepreneur.</h1>
+    <p>Building products that change how people live and work. Co-founder of espresso Displays and founder of Homerun.</p>
   </div>
+
+  <div class="container" style="padding-top: 0;">
+
+    <h2>Current</h2>
+    <div class="timeline">
+      <div class="entry">
+        <div class="meta">
+          <div class="year">2023–</div>
+        </div>
+        <div class="body">
+          <h3>Homerun</h3>
+          <div class="role">Founder</div>
+          <p>Building the all-in-one app for sharehouses — helping housemates manage bills, rent, chores, and household admin. Based in Sydney, focused on making shared living 100× better than it is today.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 3rem;">Background</h2>
+    <p style="font-size: 0.9rem; color: #444; max-width: 600px; line-height: 1.7;">
+      Civil engineering graduate from UTS turned hardware founder. Co-founded espresso Displays out of university and grew it from a Kickstarter campaign to a globally distributed product. Also runs social enterprises in Nepal. Graduate of the Sydney School of Entrepreneurship.
+    </p>
+
+  </div>
+
+  <footer>© Scott McKeon</footer>
+
 </body>
 </html>
