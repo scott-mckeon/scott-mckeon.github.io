@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homerun Switch - Compare Electricity & Gas in Less Than 3 Minutes</title>
+<meta name="description" content="Households on the same energy plan 3+ years pay around $221/yr more (ACCC). Homerun Switch compares electricity and gas plans in less than 3 minutes - see if your house is overpaying. Built in Australia for renters and sharehouses.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/favicon.png">
+<link rel="stylesheet" href="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/css/normalize.css">
+<link rel="stylesheet" href="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/css/style.css">
+<style>
+  /* ---- Mobile: form first ---- */
+  @media (max-width: 900px) {
+    .hero-visual { order: -1; }
+  }
+
+  .mobile-intro {
+    display: none;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .mobile-intro h2 {
+    font-family: var(--font);
+    font-size: clamp(2.3rem, 5.4vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .mobile-intro p {
+    font-size: 0.92rem;
+    color: var(--text-3);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-intro { display: block; }
+  }
+
+  /* ---- Mobile: centre align everything ---- */
+  @media (max-width: 900px) {
+    .hero-copy {
+      text-align: center;
+    }
+    .hero-copy h1, .hero-copy p, .hero-foot {
+      max-width: none;
+    }
+    .hero-trust {
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .hero-trust span {
+      font-size: 0.75rem;
+      gap: 0.3rem;
+      flex: 1;
+      justify-content: center;
+    }
+    .hero-trust svg {
+      flex: 0 0 14px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  /* ---- Mobile: centre proof + steps sections ---- */
+  @media (max-width: 860px) {
+    .proof-col {
+      text-align: center;
+    }
+    .proof-col .btn {
+      display: block;
+      width: 100%;
+    }
+    .proof-figure, .proof-lead, .proof-src {
+      max-width: none;
+    }
+    .card {
+      text-align: center;
+    }
+    .step-num {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* ---- Mobile: centre mission section ---- */
+  @media (max-width: 860px) {
+    .split > div { text-align: center; }
+    .tick-list li { justify-content: center; }
+  }
+
+  /* ---- Form-specific overrides ---- */
+
+  /* Utility toggle rows (replaces funnel__choice tiles) */
+  .hr-util-options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.4rem; }
+
+  .hr-util-option {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    border: 1.5px solid var(--neutral-300); border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: border-color 0.18s ease, background 0.18s ease;
+    user-select: none;
+  }
+
+  .hr-util-option.is-on { border-color: var(--brand); background: var(--orange-50); }
+
+  .hr-util-icon { color: var(--brand); flex-shrink: 0; display: flex; }
+
+  .hr-util-label {
+    font-family: var(--font); font-size: 1rem; font-weight: 600; color: var(--text);
+  }
+
+  /* Form fields */
+  .hr-field { margin-bottom: 1rem; }
+
+  .hr-field label {
+    display: block; font-size: 0.85rem; font-weight: 600;
+    color: var(--text); margin-bottom: 0.4rem; font-family: var(--font);
+  }
+
+  /* Checkboxes */
+  .hr-check-group { display: flex; flex-direction: column; gap: 1rem; margin: 1.2rem 0 1.4rem; }
+
+  .hr-check-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+
+  .hr-check-item input[type="checkbox"] {
+    width: 17px; height: 17px; margin-top: 3px;
+    accent-color: var(--brand); cursor: pointer; flex-shrink: 0;
+  }
+
+  .hr-check-text { font-size: 0.9rem; color: var(--text-2); line-height: 1.5; }
+
+  /* Info button */
+  .hr-info-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; background: var(--neutral-200); border-radius: 50%;
+    font-size: 9px; font-weight: 700; color: var(--text-3); cursor: pointer;
+    margin-left: 4px; vertical-align: middle; border: none;
+    transition: background 0.15s; position: relative; top: -1px;
+    font-family: var(--font);
+  }
+  .hr-info-btn:hover { background: var(--brand); color: var(--white); }
+
+  /* Back button */
+  .hr-back {
+    background: none; border: none; padding: 0; font-family: var(--font);
+    font-size: 0.85rem; color: var(--text-3); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 1.2rem;
+  }
+  .hr-back:hover { color: var(--text); }
+
+  /* T&C */
+  .hr-tc {
+    font-size: 0.75rem; color: var(--neutral-500);
+    line-height: 1.6; margin-bottom: 1rem;
+  }
+  .hr-tc a { color: var(--brand); text-decoration: none; }
+  .hr-tc a:hover { text-decoration: underline; }
+
+  /* Spinner */
+  .hr-spinner {
+    width: 44px; height: 44px;
+    border: 3px solid var(--neutral-200); border-top-color: var(--brand);
+    border-radius: 50%; margin: 0.5rem auto 1.4rem;
+    animation: hrSpin 0.8s linear infinite;
+  }
+  @keyframes hrSpin { to { transform: rotate(360deg); } }
+
+  .hr-done { text-align: center; padding: 1rem 0; }
+  .hr-done h2 { margin-bottom: 0.5rem; }
+  .hr-done p { font-size: 0.93rem; color: var(--text-3); max-width: 280px; margin: 0 auto; }
+
+  /* Trust signals row */
+  .hr-trust { display: flex; gap: 0.6rem 1.4rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .hr-trust-item {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.83rem; color: var(--text-3); font-weight: 500;
+  }
+  .hr-trust-item svg { flex: 0 0 14px; color: var(--brand); }
+
+  /* Modal */
+  .hr-modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(36,33,30,.45); z-index: 200;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .hr-modal-overlay.open { display: flex; }
+
+  .hr-modal {
+    background: var(--white); border-radius: var(--radius-xl);
+    padding: 2rem; max-width: 480px; width: 100%;
+    max-height: 80vh; overflow-y: auto; position: relative;
+    box-shadow: var(--shadow-md);
+  }
+  .hr-modal h3 {
+    font-family: var(--font); font-size: 1.1rem; font-weight: 700;
+    color: var(--text); margin-bottom: 1rem; padding-right: 2rem; line-height: 1.3;
+  }
+  .hr-modal p, .hr-modal li { font-size: 0.88rem; color: var(--text-3); line-height: 1.65; }
+  .hr-modal p { margin-bottom: 0.75rem; }
+  .hr-modal ul { padding-left: 1.2rem; margin-bottom: 0.75rem; }
+  .hr-modal li { margin-bottom: 0.35rem; }
+
+  .hr-modal-close {
+    position: absolute; top: 1.1rem; right: 1.1rem;
+    background: var(--neutral-100); border: none; border-radius: 50%;
+    width: 28px; height: 28px; font-size: 16px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; color: var(--text-2);
+  }
+  .hr-modal-close:hover { background: var(--neutral-200); }
+</style>
+</head>
+<body>
+
+<!-- NOT FINALISED review marker -->
+<div class="notfinal" role="status">NOT FINALISED <span>&middot; team review only</span></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-brand">
+      <img src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/logo-dark.svg" alt="Homerun">
+      <span class="nav-tag">Switch</span>
+    </div>
+    <a href="#funnel" class="btn btn-primary">Compare my energy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero hero--short">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>Paying around <span class="highlight">$221 a year</span> more than you need to?<span class="hl-ast">*</span></h1>
+      <p class="hero-sub">Households that never switch tend to pay more. Compare plans in 3 minutes, pick the one you like, and our partner does the switching for you - no calls, no forms, no logins.</p>
+      <div class="hero-trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Less than 3 minutes</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>No pushy phone calls</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>No logins or passwords</span>
+      </div>
+      <p class="hero-foot">*The ACCC has found households on the same energy plan for 3+ years pay around $221 a year more than those on a newer plan. A general market finding - your own result depends on your retailer, location and how you use energy.</p>
+    </div>
+
+    <!-- OUR FORM -->
+    <div class="hero-visual">
+      <div class="mobile-intro">
+        <h2>Overpaying for energy?</h2>
+        <p>Compare plans in 3 minutes. Free, no spam calls.</p>
+      </div>
+      <div class="funnel-card" id="funnel">
+
+        <!-- Progress -->
+        <div class="funnel__progress" id="hr-progress" aria-hidden="true">
+          <span class="funnel__dots">
+            <i class="funnel__dot is-on" id="hr-dot-1"></i>
+            <i class="funnel__dot" id="hr-dot-2"></i>
+            <i class="funnel__dot" id="hr-dot-3"></i>
+          </span>
+          <span class="funnel__count"><b id="hr-step-num">1</b> / 3</span>
+        </div>
+
+        <!-- Step 1: What to switch -->
+        <div class="funnel__step is-active" id="hr-step-1">
+          <h2 class="funnel__q">What would you like to switch?</h2>
+          <p class="funnel__hint">Most sharehouses select both.</p>
+
+          <div class="hr-util-options">
+            <div class="hr-util-option is-on" id="hr-opt-elec" onclick="hrToggleUtil('hr-opt-elec')">
+              <span class="hr-util-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>
+                </svg>
+              </span>
+              <span class="hr-util-label">Electricity</span>
+            </div>
+            <div class="hr-util-option is-on" id="hr-opt-gas" onclick="hrToggleUtil('hr-opt-gas')">
+              <span class="hr-util-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2 2 .5-1.5 0-4-1-6Z"/>
+                </svg>
+              </span>
+              <span class="hr-util-label">Gas</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="hrGoTo(2)">Start</button>
+
+          <div class="hr-trust">
+            <span class="hr-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+              Takes 3 minutes
+            </span>
+            <span class="hr-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+              Free to use
+            </span>
+            <span class="hr-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              No spam calls
+            </span>
+          </div>
+        </div>
+
+        <!-- Step 2: Your property -->
+        <div class="funnel__step" id="hr-step-2">
+          <button class="hr-back" onclick="hrGoTo(1)">&#8592; Back</button>
+          <h2 class="funnel__q">Your property</h2>
+          <p class="funnel__hint">So we can find plans available in your area.</p>
+
+          <div class="hr-field">
+            <label for="hr-address">Address</label>
+            <input type="text" id="hr-address" class="funnel__input" placeholder="Start typing your address...">
+            <!-- Note for Brendon: connect to Google Places API for auto-fill -->
+          </div>
+
+          <div class="hr-check-group">
+            <div class="hr-check-item">
+              <input type="checkbox" id="hr-solar">
+              <span class="hr-check-text">Do you have rooftop solar panels installed?</span>
+            </div>
+            <div class="hr-check-item">
+              <input type="checkbox" id="hr-life-support">
+              <span class="hr-check-text">
+                Does anyone residing or intending to reside at the property require the use of medical equipment for life support, where their health may be impacted if there was an outage?
+                <button class="hr-info-btn" onclick="hrOpenModal(event)" aria-label="What counts as life support equipment">i</button>
+              </span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="hrGoTo(3)">Continue</button>
+        </div>
+
+        <!-- Step 3: Your details -->
+        <div class="funnel__step" id="hr-step-3">
+          <button class="hr-back" onclick="hrGoTo(2)">&#8592; Back</button>
+          <h2 class="funnel__q">Your details</h2>
+          <p class="funnel__hint">We'll send your comparison results here.</p>
+
+          <div class="hr-field">
+            <label for="hr-name">Full name</label>
+            <input type="text" id="hr-name" class="funnel__input" placeholder="Jane Smith">
+          </div>
+          <div class="hr-field">
+            <label for="hr-email">Email address</label>
+            <input type="email" id="hr-email" class="funnel__input" placeholder="jane@example.com">
+          </div>
+
+          <p class="hr-tc" style="margin-top: 0.8rem;">
+            By clicking Compare, you agree to our <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>, including receiving your results and occasional updates from Homerun. Unsubscribe any time.
+          </p>
+
+          <button class="btn btn-primary btn-block" onclick="hrGoTo(4)">Compare</button>
+        </div>
+
+        <!-- Step 4: Loading -->
+        <div class="funnel__step" id="hr-step-4">
+          <div class="hr-done">
+            <div class="hr-spinner"></div>
+            <h2 class="funnel__q">Finding your plans...</h2>
+            <p>This is where the page transitions to the comparison page.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST BAND -->
+<section class="trustband" aria-label="Retailers we compare">
+  <div class="container">
+    <div class="trustband__head">
+      <span class="label">Real Australian retailers</span>
+      <h2>We line up plans from energy retailers Aussies actually use.</h2>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/alinta.png" alt="Alinta Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/actewagl.png" alt="ActewAGL" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/dodo.png" alt="Dodo" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/engie.png" alt="ENGIE" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/powershop.png" alt="Powershop" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/1st-energy.png" alt="1st Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/ovo.png" alt="OVO Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/blue-nrg.png" alt="Blue NRG" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/arcline.png" alt="Arcline by RACV" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/alinta.png" alt="Alinta Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/actewagl.png" alt="ActewAGL" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/dodo.png" alt="Dodo" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/engie.png" alt="ENGIE" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/powershop.png" alt="Powershop" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/1st-energy.png" alt="1st Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/ovo.png" alt="OVO Energy" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/blue-nrg.png" alt="Blue NRG" loading="lazy"></span>
+      <span class="retailer-chip"><img class="retailer-logo" src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/retailers/arcline.png" alt="Arcline by RACV" loading="lazy"></span>
+    </div>
+  </div>
+  <div class="container">
+    <p class="trustband__note">Plans come from participating Australian retailers through our comparison partner CIMET.</p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section style="background:var(--neutral-100);">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-col fade-up">
+        <span class="label">The loyalty tax</span>
+        <h2 class="proof-figure">~$221<span class="yr">/yr more</span></h2>
+        <p class="proof-lead">is what households on the same plan for 3+ years tend to pay, versus those on a newer one. Worth three minutes to check if that's your house.</p>
+        <a href="#funnel" class="btn btn-primary">See where you stand</a>
+        <p class="proof-src">Source: Australian Competition &amp; Consumer Commission (ACCC). A general market finding - your result depends on your retailer, location and usage.</p>
+      </div>
+      <div class="devices">
+        <div class="phone">
+          <div class="phone__screen">
+            <span class="phone__ph">Homerun app</span>
+            <img src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/app/bills-4.png" alt="Homerun app - bills and energy plan scanning" loading="lazy" onerror="this.remove()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">How it works</span>
+      <h2>Three steps. One bill sorted.<br class="br-d"> No hold music.</h2>
+    </div>
+    <div class="cards cards-3 stagger">
+      <div class="card fade-up">
+        <div class="step-num">1</div>
+        <h3>Complete the form</h3>
+        <p>Tell us your address, what you'd like to switch, and a couple of quick details about your place. Takes about a minute.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="step-num">2</div>
+        <h3>Review the plans</h3>
+        <p>We line up plans from Australian energy retailers side by side, so you can see exactly how they compare to what you're on now.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="step-num">3</div>
+        <h3>Select one and switch</h3>
+        <p>Pick the plan you want and our partner handles the whole changeover - no calls, no forms, no interruption to your supply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONESTY -->
+<section class="honesty">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">No catch</span>
+      <h2>Straight up about how this works.</h2>
+    </div>
+    <div class="honesty-card fade-up">
+      <h3>Here's the honest version, because you'd ask anyway:</h3>
+      <ul>
+        <li><strong>We compare, you decide.</strong> Homerun Switch lines up electricity and gas plans from Australian retailers so you can see what's available and how it compares to what you're on now.</li>
+        <li><strong>We can't promise you'll save money.</strong> There are clear regulations around promising energy savings - and rightly so. Whether you end up on a better plan depends on your current retailer, where you live and how you use energy. We show you the options. What you do with that is up to you.</li>
+        <li><strong>We may earn a commission if you switch.</strong> If you choose to switch through us, we may receive a fee from the retailer. It doesn't affect which plans we show you or how they're ranked - and it helps us keep building products that make sharehouse life easier.</li>
+        <li><strong>We're not an energy retailer.</strong> Homerun is an Australian app for running a sharehouse, made by Sharehouse Pro Pty Ltd. We don't generate or sell energy.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Before you start</span>
+      <h2>Two things everyone asks first.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>How long does it actually take?<svg class="q-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-body"><p>Less than 3 minutes. You'll need your address and a few quick details about your place. If you've got a recent energy bill handy it's even faster, but it's not essential to start.</p></div>
+      </details>
+      <details>
+        <summary>Will I get spam calls and emails after this?<svg class="q-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-body"><p>That's the thing everyone dreads, and fair enough. We only use your details to run your comparison and send you your results. You can read exactly how your information is handled in our <a href="https://homerun.app/privacy-policy" rel="nofollow">privacy policy</a>.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- HOMERUN MISSION + APP -->
+<section style="background: var(--neutral-100);">
+  <div class="container">
+    <div class="split">
+      <div>
+        <span class="label">Our mission</span>
+        <h2>We're building tools to make renting better.</h2>
+        <p>Renting in Australia is harder than it should be. Bills go unchecked, rent is chased over text, and one person in the house ends up carrying all of it. Homerun is here to fix that - starting with energy.</p>
+        <p>Switch is our first tool. The Homerun app is where it all comes together - rent payments, bill splitting, and sharehouse management in one place. So nobody has to be the house admin anymore.</p>
+        <a href="https://homerun.app" rel="nofollow" class="btn btn-primary" style="margin-top: 1.2rem; display: inline-flex;">Learn about the Homerun app</a>
+      </div>
+      <div class="panel-soft">
+        <span class="label">The Homerun app</span>
+        <h3 style="margin-bottom: 1rem;">Everything your sharehouse needs, in one place.</h3>
+        <ul class="tick-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+            Pay and track rent without the awkward conversations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+            Split bills fairly across the whole house
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+            Compare and switch energy plans in minutes
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+            Built for Australian sharehouses
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="start">
+  <div class="container">
+    <div class="final-box">
+      <div>
+        <span class="label">3 minutes, that's it</span>
+        <h2>See if your sharehouse is overpaying.</h2>
+        <p>Answer three quick questions and we'll line up electricity and gas plans next to what you've got now. No account, no obligation, no hold music.</p>
+      </div>
+      <div class="final-cta">
+        <a href="#funnel" class="btn btn-primary btn-lg btn-block">Start your comparison</a>
+        <p class="form-foot">Comparing is free and signs you up to nothing. We earn a referral fee only if you switch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/logo-white.svg" alt="Homerun">
+        <p style="color:#8a827b;max-width:320px;font-size:0.92rem;">The smartest way to run a sharehouse. Made in Australia.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#funnel">Compare my energy</a>
+        <a href="https://homerun.app" rel="nofollow">Homerun app</a>
+        <a href="https://homerun.app/privacy-policy" rel="nofollow">Privacy</a>
+      </div>
+    </div>
+    <p class="footer-fine">
+      Homerun Switch is an energy comparison service operated by Sharehouse Pro Pty Ltd (ABN 22 689 570 750), powered by our comparison partner CIMET. We compare plans from a panel of participating Australian energy retailers - this does not include every retailer or every plan in the market. We may receive a referral commission from the retailer if you switch through Homerun Switch; this fee does not affect the plans shown or their ranking. Comparisons are general in nature and based on the information you provide. The ~$221 per year figure refers to a general ACCC finding for households that have been on the same plan for three years or more compared with those on a newer plan; it is not a prediction of your result, which depends on your retailer, location and usage. You can also compare plans for free at the Australian Government's Energy Made Easy site (energymadeeasy.gov.au). &copy; 2026 Sharehouse Pro Pty Ltd.
+    </p>
+  </div>
+</footer>
+
+<!-- Life support modal -->
+<div class="hr-modal-overlay" id="hr-modal" onclick="hrCloseOnOverlay(event)">
+  <div class="hr-modal">
+    <button class="hr-modal-close" onclick="hrCloseModal()">&#215;</button>
+    <h3>What counts as life support equipment?</h3>
+    <p>According to the National Energy Retail Rules and the Victorian Energy Retail Code, life support equipment includes:</p>
+    <ul>
+      <li>Oxygen concentrator</li>
+      <li>Intermittent peritoneal dialysis machine</li>
+      <li>Kidney dialysis machine</li>
+      <li>Chronic positive airways pressure respirator (CPAP)</li>
+      <li>Crigler-Najjar syndrome phototherapy equipment</li>
+      <li>Ventilator for life support</li>
+      <li>Any other equipment certified by a registered medical practitioner as required for life support at the property - including where a current medical certificate confirms a person's medical condition requires continued supply of electricity or gas</li>
+    </ul>
+    <p>This may also include: external heart pumps, respirators (iron lung), suction pumps, feeding pumps, insulin pumps, airbed vibrators, hot water, nebulizers/humidifiers/vaporizers, apnoea monitors, medically required heating or air conditioning, medically required refrigeration, and powered wheelchairs.</p>
+  </div>
+</div>
+
+<script>
+  /* Scroll fade-up */
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ io.observe(el); });
+  })();
+
+  /* Form */
+  function hrGoTo(step) {
+    document.querySelectorAll('.funnel__step').forEach(function(s){ s.classList.remove('is-active'); });
+    var el = document.getElementById('hr-step-' + step);
+    if (el) el.classList.add('is-active');
+
+    var progress = document.getElementById('hr-progress');
+    if (step === 4) { progress.style.visibility = 'hidden'; return; }
+    progress.style.visibility = 'visible';
+    document.getElementById('hr-step-num').textContent = step;
+
+    [1,2,3].forEach(function(i){
+      document.getElementById('hr-dot-' + i).classList.toggle('is-on', i <= step);
+    });
+
+    document.getElementById('funnel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function hrToggleUtil(id) {
+    document.getElementById(id).classList.toggle('is-on');
+  }
+
+  function hrOpenModal(e) { e.preventDefault(); document.getElementById('hr-modal').classList.add('open'); }
+  function hrCloseModal() { document.getElementById('hr-modal').classList.remove('open'); }
+  function hrCloseOnOverlay(e) { if (e.target === document.getElementById('hr-modal')) hrCloseModal(); }
+</script>
+
+</body>
+</html>
