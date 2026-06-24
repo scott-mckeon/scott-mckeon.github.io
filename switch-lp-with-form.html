@@ -67,6 +67,13 @@
     }
   }
 
+  /* ---- Mobile: trust band heading size ---- */
+  @media (max-width: 900px) {
+    .trustband__head h2 {
+      font-size: clamp(1.5rem, 4.5vw, 2rem);
+    }
+  }
+
   /* ---- Mobile: centre proof + steps sections ---- */
   @media (max-width: 860px) {
     .proof-col {
@@ -239,7 +246,7 @@
   <div class="container hero-grid">
     <div class="hero-copy">
       <h1>Paying around <span class="highlight">$221 a year</span> more than you need to?<span class="hl-ast">*</span></h1>
-      <p class="hero-sub">Households that never switch tend to pay more. Compare plans in 3 minutes, pick the one you like, and our partner does the switching for you - no calls, no forms, no logins.</p>
+      <p class="hero-sub">Households that never switch tend to pay more. Compare plans in 3 minutes, pick the one you like, and our partner does the switching for you - no calls, no logins.</p>
       <div class="hero-trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Less than 3 minutes</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>No pushy phone calls</span>
@@ -377,7 +384,6 @@
 <section class="trustband" aria-label="Retailers we compare">
   <div class="container">
     <div class="trustband__head">
-      <span class="label">Real Australian retailers</span>
       <h2>We line up plans from energy retailers Aussies actually use.</h2>
     </div>
   </div>
@@ -404,7 +410,7 @@
     </div>
   </div>
   <div class="container">
-    <p class="trustband__note">Plans come from participating Australian retailers through our comparison partner CIMET.</p>
+    <p class="trustband__note">Plans come from participating Australian energy retailers. We don't compare the full market.</p>
   </div>
 </section>
 
@@ -470,7 +476,7 @@
         <li><strong>We compare, you decide.</strong> Homerun Switch lines up electricity and gas plans from Australian retailers so you can see what's available and how it compares to what you're on now.</li>
         <li><strong>We can't promise you'll save money.</strong> There are clear regulations around promising energy savings - and rightly so. Whether you end up on a better plan depends on your current retailer, where you live and how you use energy. We show you the options. What you do with that is up to you.</li>
         <li><strong>We may earn a commission if you switch.</strong> If you choose to switch through us, we may receive a fee from the retailer. It doesn't affect which plans we show you or how they're ranked - and it helps us keep building products that make sharehouse life easier.</li>
-        <li><strong>We're not an energy retailer.</strong> Homerun is an Australian app for running a sharehouse, made by Sharehouse Pro Pty Ltd. We don't generate or sell energy.</li>
+        <li><strong>We're not an energy retailer.</strong> Homerun is an Australian app for running a sharehouse. We don't generate or sell energy.</li>
       </ul>
     </div>
   </div>
@@ -525,7 +531,7 @@
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
-            Built for Australian sharehouses
+            And so much more...
           </li>
         </ul>
       </div>
