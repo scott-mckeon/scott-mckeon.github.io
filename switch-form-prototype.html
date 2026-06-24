@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homerun Switch</title>
+  <style>
+    @font-face {
+      font-family: 'Wallop';
+      src: url('https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page/fonts/Wallop-Variable.ttf') format('truetype-variations');
+      font-weight: 200 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange-50:  #fcefe3;
+      --orange-100: #fce2ca;
+      --orange-200: #fccc9f;
+      --orange-400: #fc9c42;
+      --orange-500: #fc8f29;
+      --orange-600: #ea7e03;
+      --orange-700: #d56b00;
+
+      --neutral-50:  #fdfcfc;
+      --neutral-100: #f5f5f4;
+      --neutral-200: #e9e8e7;
+      --neutral-300: #d7d6d5;
+      --neutral-500: #938d8a;
+      --neutral-600: #706966;
+      --neutral-700: #5c5451;
+      --neutral-800: #3f3b37;
+      --neutral-900: #24211e;
+
+      --white: #ffffff;
+      --cream: #fff7ee;
+      --brand: var(--orange-500);
+      --brand-hover: var(--orange-600);
+      --text: var(--neutral-900);
+      --text-2: var(--neutral-800);
+      --text-3: var(--neutral-700);
+      --border: var(--neutral-300);
+
+      --font: 'Wallop', Arial, sans-serif;
+      --radius-lg: 14px;
+      --radius-xl: 22px;
+      --radius-pill: 999px;
+      --shadow-sm: 0 2px 10px rgba(36,33,30,.06);
+      --shadow-md: 0 14px 40px rgba(36,33,30,.10);
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--text);
+      background: radial-gradient(1100px 480px at 78% -8%, var(--orange-50) 0%, rgba(252,239,227,0) 60%), var(--neutral-50);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Card */
+    .funnel-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      padding: 2rem 2rem 1.8rem;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    /* Progress */
+    .funnel__progress {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .funnel__dots {
+      display: inline-flex;
+      gap: 0.4rem;
+    }
+
+    .funnel__dot {
+      width: 26px;
+      height: 5px;
+      border-radius: var(--radius-pill);
+      background: var(--neutral-200);
+      transition: background 0.25s ease;
+    }
+
+    .funnel__dot.is-on { background: var(--brand); }
+
+    .funnel__count {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-3);
+    }
+
+    .funnel__count b { color: var(--text); }
+
+    /* Steps */
+    .funnel__step { display: none; }
+    .funnel__step.is-active {
+      display: block;
+      animation: funnelIn 0.28s ease;
+    }
+
+    @keyframes funnelIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Step headings */
+    .funnel__q {
+      font-family: var(--font);
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .funnel__hint {
+      font-size: 0.93rem;
+      color: var(--text-3);
+      margin: 0 0 1.3rem;
+    }
+
+    /* Back button */
+    .funnel__back-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      color: var(--text-3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .funnel__back-btn:hover { color: var(--text); }
+
+    /* Step 1: utility toggles */
+    .utility-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .utility-option {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease;
+      user-select: none;
+    }
+
+    .utility-option.is-on {
+      border-color: var(--brand);
+      background: var(--orange-50);
+    }
+
+    .utility-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brand);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .utility-icon {
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    .utility-icon svg { display: block; }
+
+    .utility-label {
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font);
+      color: var(--text);
+    }
+
+    /* Trust signals */
+    .trust-signals {
+      display: flex;
+      gap: 0.6rem 1.4rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.83rem;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    .trust-item svg {
+      flex: 0 0 14px;
+      color: var(--brand);
+    }
+
+    /* Form fields */
+    .field { margin-bottom: 1rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      font-family: var(--font);
+    }
+
+    .funnel__input {
+      width: 100%;
+      padding: 0.95rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-family: var(--font);
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .funnel__input:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px var(--orange-50);
+    }
+
+    .funnel__input::placeholder { color: var(--neutral-500); }
+
+    /* Checkboxes */
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.2rem 0 1.4rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 3px;
+      accent-color: var(--brand);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .check-text {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* Info button */
+    .info-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      background: var(--neutral-200);
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-3);
+      cursor: pointer;
+      margin-left: 4px;
+      vertical-align: middle;
+      border: none;
+      transition: background 0.15s;
+      position: relative;
+      top: -1px;
+      font-family: var(--font);
+    }
+
+    .info-btn:hover {
+      background: var(--brand);
+      color: var(--white);
+    }
+
+    /* CTA button */
+    .btn {
+      width: 100%;
+      padding: 1rem 1.7rem;
+      background: var(--brand);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn:hover {
+      background: var(--brand-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn:active { transform: scale(0.99); }
+
+    /* T&C */
+    .tc {
+      font-size: 0.75rem;
+      color: var(--neutral-500);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .tc a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .tc a:hover { text-decoration: underline; }
+
+    /* Card footer */
+    .funnel-card__foot {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--neutral-500);
+      text-align: center;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(36,33,30,.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      max-width: 480px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .modal h3 {
+      font-family: var(--font);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-right: 2rem;
+      line-height: 1.3;
+    }
+
+    .modal p, .modal li {
+      font-size: 0.88rem;
+      color: var(--text-3);
+      line-height: 1.65;
+    }
+
+    .modal p { margin-bottom: 0.75rem; }
+
+    .modal ul {
+      padding-left: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal li { margin-bottom: 0.35rem; }
+
+    .modal-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: var(--neutral-100);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+    }
+
+    .modal-close:hover { background: var(--neutral-200); }
+
+    /* Success */
+    .success-wrap { text-align: center; padding: 1rem 0; }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 3px solid var(--neutral-200);
+      border-top-color: var(--brand);
+      border-radius: 50%;
+      margin: 0 auto 1.4rem;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .success-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .success-icon svg { color: var(--white); }
+
+    .success-wrap h2 {
+      font-family: var(--font);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .success-wrap p {
+      font-size: 0.95rem;
+      color: var(--text-3);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 500px) {
+      body { padding: 16px; align-items: flex-start; }
+      .funnel-card { padding: 1.5rem 1.3rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="funnel-card">
+
+  <!-- Progress -->
+  <div class="funnel__progress" id="progress">
+    <span class="funnel__dots">
+      <i class="funnel__dot is-on" id="dot-1"></i>
+      <i class="funnel__dot" id="dot-2"></i>
+      <i class="funnel__dot" id="dot-3"></i>
+    </span>
+    <span class="funnel__count"><b id="step-num">1</b> / 3</span>
+  </div>
+
+  <!-- Step 1: What to switch -->
+  <div class="funnel__step is-active" id="step-1">
+    <h2 class="funnel__q">What would you like to switch?</h2>
+    <p class="funnel__hint">Most sharehouses select both.</p>
+
+    <div class="utility-options">
+      <div class="utility-option is-on" id="opt-elec" onclick="toggleUtil('opt-elec')">
+        <span class="utility-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>
+          </svg>
+        </span>
+        <span class="utility-label">Electricity</span>
+      </div>
+      <div class="utility-option is-on" id="opt-gas" onclick="toggleUtil('opt-gas')">
+        <span class="utility-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2 2 .5-1.5 0-4-1-6Z"/>
+          </svg>
+        </span>
+        <span class="utility-label">Gas</span>
+      </div>
+    </div>
+
+    <button class="btn" onclick="goTo(2)">Start</button>
+
+    <div class="trust-signals">
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+        Takes 3 minutes
+      </span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+        Free to use
+      </span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        No spam calls
+      </span>
+    </div>
+  </div>
+
+  <!-- Step 2: Your property -->
+  <div class="funnel__step" id="step-2">
+    <button class="funnel__back-btn" onclick="goTo(1)">&#8592; Back</button>
+    <h2 class="funnel__q">Your property</h2>
+    <p class="funnel__hint">So we can find plans available in your area.</p>
+
+    <div class="field">
+      <label for="address">Address</label>
+      <input type="text" id="address" class="funnel__input" placeholder="Start typing your address...">
+      <!-- Note for Brendon: connect to Google Places API for auto-fill -->
+    </div>
+
+    <div class="check-group">
+      <div class="check-item">
+        <input type="checkbox" id="solar">
+        <span class="check-text">Do you have rooftop solar panels installed?</span>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="life-support">
+        <span class="check-text">
+          Does anyone residing or intending to reside at the property require the use of medical equipment for life support, where their health may be impacted if there was an outage?
+          <button class="info-btn" onclick="openModal(event)" aria-label="What counts as life support equipment">i</button>
+        </span>
+      </div>
+    </div>
+
+    <button class="btn" onclick="goTo(3)">Continue</button>
+  </div>
+
+  <!-- Step 3: Your details -->
+  <div class="funnel__step" id="step-3">
+    <button class="funnel__back-btn" onclick="goTo(2)">&#8592; Back</button>
+    <h2 class="funnel__q">Your details</h2>
+    <p class="funnel__hint">We'll send your comparison results here.</p>
+
+    <div class="field">
+      <label for="first-name">Full name</label>
+      <input type="text" id="first-name" class="funnel__input" placeholder="Jane Smith">
+    </div>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" class="funnel__input" placeholder="jane@example.com">
+    </div>
+
+    <p class="tc">
+      By clicking Compare, you agree to our <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>, including receiving your results and occasional updates from Homerun. Unsubscribe any time.
+    </p>
+
+    <button class="btn" onclick="goTo(4)">Compare</button>
+  </div>
+
+  <!-- Done -->
+  <div class="funnel__step" id="step-4">
+    <div class="success-wrap">
+      <div class="spinner"></div>
+      <h2>Finding your plans...</h2>
+      <p style="margin-top: 0.5rem;">This is where the page transitions to the comparison page.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Life support modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeOnOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#215;</button>
+    <h3>What counts as life support equipment?</h3>
+    <p>According to the National Energy Retail Rules and the Victorian Energy Retail Code, life support equipment includes:</p>
+    <ul>
+      <li>Oxygen concentrator</li>
+      <li>Intermittent peritoneal dialysis machine</li>
+      <li>Kidney dialysis machine</li>
+      <li>Chronic positive airways pressure respirator (CPAP)</li>
+      <li>Crigler-Najjar syndrome phototherapy equipment</li>
+      <li>Ventilator for life support</li>
+      <li>Any other equipment certified by a registered medical practitioner as required for life support at the property - including where a current medical certificate confirms a person's medical condition requires continued supply of electricity or gas</li>
+    </ul>
+    <p>This may also include: external heart pumps, respirators (iron lung), suction pumps, feeding pumps, insulin pumps, airbed vibrators, hot water, nebulizers/humidifiers/vaporizers, apnoea monitors, medically required heating or air conditioning, medically required refrigeration, and powered wheelchairs.</p>
+  </div>
+</div>
+
+<script>
+  function goTo(step) {
+    document.querySelectorAll('.funnel__step').forEach(s => s.classList.remove('is-active'));
+    document.getElementById('step-' + step).classList.add('is-active');
+
+    const dots = [
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2'),
+      document.getElementById('dot-3'),
+    ];
+    const progress = document.getElementById('progress');
+
+    if (step === 4) {
+      progress.style.visibility = 'hidden';
+      return;
+    }
+
+    progress.style.visibility = 'visible';
+    document.getElementById('step-num').textContent = step;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-on', i + 1 <= step);
+    });
+  }
+
+  function toggleUtil(optId) {
+    document.getElementById(optId).classList.toggle('is-on');
+  }
+
+  function openModal(e) {
+    e.preventDefault();
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  function closeOnOverlay(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+</script>
+
+</body>
+</html>
