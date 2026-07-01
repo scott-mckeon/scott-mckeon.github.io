@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Gambling Ads — You've landed at stopgamblingads.com</title>
+  <meta name="description" content="The official campaign is at stopgamblingads.com.au — we bought this domain so no one else could use it. We support a full ban on gambling ads.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    /* ---- Wallop Variable Font (Homerun brand) ---- */
+    @font-face {
+      font-family: 'Wallop';
+      src: url('https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/fonts/Wallop-Variable.ttf') format('truetype-variations');
+      font-weight: 200 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ---- Design tokens ---- */
+    :root {
+      --orange-50:  #fcefe3;
+      --orange-500: #fc8f29;
+      --orange-600: #ea7e03;
+      --neutral-50:  #fdfcfc;
+      --neutral-100: #f5f5f4;
+      --neutral-200: #e9e8e7;
+      --neutral-300: #d7d6d5;
+      --neutral-500: #938d8a;
+      --neutral-700: #5c5451;
+      --neutral-800: #3f3b37;
+      --neutral-900: #24211e;
+      --white:  #ffffff;
+      --cream:  #fff7ee;
+      --dark:   #1a0f22;
+      --font:   'Wallop', Arial, sans-serif;
+      --radius-sm:   8px;
+      --radius-lg:   14px;
+      --radius-xl:   22px;
+      --radius-pill: 999px;
+      --max-w: 1100px;
+      --shadow-md: 0 14px 40px rgba(36,33,30,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--neutral-900);
+      background: var(--neutral-50);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2.5rem, 5.5vw, 3.9rem); margin-bottom: 1.2rem; }
+    h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin-bottom: 1rem; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight: 600; margin-bottom: 0.5rem; }
+
+    p { margin-bottom: 1rem; line-height: 1.65; }
+    p:last-child { margin-bottom: 0; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+
+    .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    /* ======================================================
+       NAV
+    ====================================================== */
+    .nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      padding: 1.6rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img { height: 26px; display: block; }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* ======================================================
+       HERO
+    ====================================================== */
+    .hero {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 9rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle grid — mirrors Stop Gambling Ads aesthetic */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(0deg,  rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 60px);
+      pointer-events: none;
+    }
+
+    /* warm orange glow behind heading */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(252,143,41,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-eyebrow { color: var(--orange-500); }
+
+    .hero h1 {
+      color: var(--white);
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange-500);
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.62);
+      max-width: 520px;
+      margin: 0 auto 2.6rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange-500);
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 24px rgba(252,143,41,0.35);
+    }
+    .btn-cta:hover { background: var(--orange-600); transform: translateY(-2px); }
+    .btn-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .hero-team {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-pill);
+      padding: 0.65rem 1.3rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-team a {
+      color: var(--orange-500);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hero-team a:hover { text-decoration: underline; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.28);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .scroll-hint svg {
+      width: 18px; height: 18px;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ======================================================
+       SUPPORT BAND
+    ====================================================== */
+    .support-band {
+      background: var(--orange-500);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .support-band .eyebrow { color: rgba(255,255,255,0.72); }
+    .support-band h2 { color: var(--white); max-width: 680px; margin: 0 auto 1rem; }
+    .support-band p { color: rgba(255,255,255,0.82); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+
+    /* ======================================================
+       RENTER SECTION
+    ====================================================== */
+    .renter-section {
+      background: var(--cream);
+      padding: 6.5rem 0;
+    }
+
+    .renter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .renter-copy .eyebrow { color: var(--orange-500); }
+    .renter-copy h2 { margin-bottom: 1.1rem; }
+    .renter-copy p { color: var(--neutral-800); max-width: 480px; }
+    .renter-copy .note { font-size: 0.88rem; color: var(--neutral-500); }
+
+    /* Form card */
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-card h3 {
+      margin-bottom: 1.6rem;
+      font-size: 1.15rem;
+    }
+
+    .field { margin-bottom: 1.1rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--neutral-900);
+      margin-bottom: 0.4rem;
+      font-family: var(--font);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1.5px solid var(--neutral-300);
+      border-radius: var(--radius-lg);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--neutral-900);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--neutral-500); }
+    .field input:focus,
+    .field textarea:focus { border-color: var(--orange-500); }
+    .field textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--orange-500);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: var(--orange-600); }
+
+    .form-privacy {
+      font-size: 0.77rem;
+      color: var(--neutral-500);
+      text-align: center;
+      margin-top: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* ======================================================
+       WHAT WE'RE BUILDING
+    ====================================================== */
+    .building-section {
+      padding: 6.5rem 0;
+      background: var(--neutral-50);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-head .eyebrow { color: var(--orange-500); }
+    .section-head h2 { max-width: 580px; margin: 0 auto 0.8rem; }
+    .section-head p { max-width: 500px; margin: 0 auto; color: var(--neutral-700); font-size: 1rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1.5px solid var(--neutral-200);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--neutral-300);
+    }
+
+    .card-icon {
+      width: 48px; height: 48px;
+      background: var(--orange-50);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange-500);
+      margin-bottom: 1.25rem;
+    }
+    .card-icon svg { width: 23px; height: 23px; }
+
+    .card h3 { color: var(--neutral-900); margin-bottom: 0.6rem; line-height: 1.2; }
+    .card p { color: var(--neutral-700); font-size: 0.93rem; line-height: 1.65; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 1.3rem;
+    }
+    .tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--orange-600);
+      background: var(--orange-50);
+      border-radius: var(--radius-pill);
+      padding: 0.22rem 0.65rem;
+    }
+
+    /* ======================================================
+       FOOTER
+    ====================================================== */
+    .footer {
+      background: var(--neutral-900);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo img { height: 22px; display: block; }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--neutral-500);
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--neutral-500);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ======================================================
+       RESPONSIVE
+    ====================================================== */
+    @media (max-width: 860px) {
+      .renter-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { justify-content: center; }
+      .nav-btn { display: none; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="https://joinhomerun.com">
+        <img
+          src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/logo-white.svg"
+          alt="Homerun"
+          class="nav-logo"
+        >
+      </a>
+      <a href="https://www.stopgamblingads.com.au" class="nav-btn">
+        Official campaign &rarr;
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow hero-eyebrow">You've landed at stopgamblingads.com</span>
+      <h1>The campaign is at<br><em>stopgamblingads.com.au</em></h1>
+      <p class="hero-sub">
+        We bought this domain so no one else could. Head to the official page and send your MP an email in under two minutes.
+      </p>
+      <a href="https://www.stopgamblingads.com.au" class="btn-cta">
+        Go to stopgamblingads.com.au
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <div style="margin-top: 1.6rem; text-align: center;">
+        <span class="hero-team">
+          Part of the campaign team? We'd like to hand you this domain. &nbsp;<a href="mailto:hello@joinhomerun.com">Get in touch &rarr;</a>
+        </span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Keep scrolling</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M6 13l6 6 6-6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SUPPORT BAND -->
+  <section class="support-band">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">Homerun supports this campaign</span>
+      <h2>We want gambling ads out of Australian homes</h2>
+      <p>
+        Renters and housemates watch sport, scroll social, and catch up on TV. Gambling ads are normalised in exactly the spaces we're building for. We back a full ban, and we're glad someone is pushing for it.
+      </p>
+    </div>
+  </section>
+
+  <!-- RENTER ADVOCACY + FORM -->
+  <section class="renter-section" id="renters">
+    <div class="container">
+      <div class="renter-grid">
+        <div class="renter-copy">
+          <span class="eyebrow">Renter advocacy</span>
+          <h2>Renters deserve better tools</h2>
+          <p>
+            Homerun is building services for renters and sharehouses - from finding a better energy plan to managing bills, rent, and the day-to-day of sharing a house.
+          </p>
+          <p>
+            We think renters are underserved by the systems built around them. If there's something you wish existed, or something driving you mad, we want to hear it.
+          </p>
+          <p class="note">We read every submission.</p>
+        </div>
+
+        <div class="form-card">
+          <h3>Tell us what would help</h3>
+          <!--
+            SETUP: Replace the action URL below with your form endpoint.
+            Options:
+              Tally.so: embed a Tally form instead of this HTML form
+              Formspree: sign up at formspree.io, create a form, paste the endpoint here
+                e.g. action="https://formspree.io/f/YOUR_FORM_ID"
+          -->
+          <form action="https://formspree.io/scott@sharehousepro.com" method="POST">
+            <input type="hidden" name="_subject" value="Homerun renter feedback — stopgamblingads.com">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Alex" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div class="field">
+              <label for="message">What would you like us to build or fix?</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="e.g. I wish there was an easy way to split electricity fairly when one housemate uses way more than everyone else..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send to Homerun</button>
+            <p class="form-privacy">No spam. Your details stay with us and are never shared.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE'RE BUILDING -->
+  <section class="building-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we're building</span>
+        <h2>Tools for renters and sharehouses</h2>
+        <p>We're starting with the things that save money and reduce house friction.</p>
+      </div>
+
+      <div class="cards">
+
+        <!-- Card 1: Energy switching -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>
+            </svg>
+          </div>
+          <h3>Better energy plans - and reminders to switch</h3>
+          <p>
+            Most sharehouses are on the same energy plan they were when they moved in. Homerun Switch compares plans in 3 minutes and handles the switch for you - no calls, no logins. And we'll remind you when it's time to look again.
+          </p>
+          <div class="tags">
+            <span class="tag">Save ~$221/yr</span>
+            <span class="tag">3 minutes</span>
+            <span class="tag">No phone calls</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Sharehouse management -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Sharehouse management - bills, rent, tasks, chores</h3>
+          <p>
+            Split bills fairly, track rent, manage house tasks, chores, and events. One app for the whole house, so nothing falls through the cracks and nobody gets stuck paying more than their share.
+          </p>
+          <div class="tags">
+            <span class="tag">Bill splitting</span>
+            <span class="tag">Rent tracking</span>
+            <span class="tag">Tasks & chores</span>
+            <span class="tag">House events</span>
+          </div>
+        </div>
+
+        <!-- Card 3: WhatsApp AI assistant -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3>An AI house assistant in WhatsApp</h3>
+          <p>
+            A WhatsApp agent for the whole house. Ask it to sort the bills, find out who owes what, or manage a task - without downloading another app or chasing anyone down.
+          </p>
+          <div class="tags">
+            <span class="tag">WhatsApp</span>
+            <span class="tag">Whole house</span>
+            <span class="tag">Always on</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img
+        src="https://sites.joinhomerun.com/switch-marketing-hub/switch-landing-page-short/images/logo-white.svg"
+        alt="Homerun"
+        style="height: 22px;"
+      >
+      <p class="footer-copy">Built for Australian renters and sharehouses.</p>
+      <ul class="footer-links">
+        <li><a href="https://www.stopgamblingads.com.au">stopgamblingads.com.au</a></li>
+        <li><a href="https://joinhomerun.com">joinhomerun.com</a></li>
+        <li><a href="mailto:hello@joinhomerun.com">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
